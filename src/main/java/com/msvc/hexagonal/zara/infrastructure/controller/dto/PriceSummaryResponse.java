@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -24,6 +23,6 @@ public class PriceSummaryResponse {
     private LocalDateTime startDate;
     @JsonFormat(pattern = ConstantsUtils.FORMATDATETIME)
     private LocalDateTime endDate;
-    private BigDecimal price;
+    private Double price;
     private String currency;
 }
