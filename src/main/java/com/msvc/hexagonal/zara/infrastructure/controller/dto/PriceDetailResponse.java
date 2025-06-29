@@ -11,9 +11,6 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class PriceDetailResponse {
     private Long id;
     private Long brandId;

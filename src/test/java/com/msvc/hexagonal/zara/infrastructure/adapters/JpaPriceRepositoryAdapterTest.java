@@ -23,11 +23,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 
-@ExtendWith(MockitoExtension.class) // Enable Mockito support
+@ExtendWith(MockitoExtension.class)
 class JpaPriceRepositoryAdapterTest {
 
     @Mock
-    private SpringDatePriceRepository springDatePriceRepository; // Fix: Add @Mock annotation
+    private SpringDatePriceRepository springDatePriceRepository;
 
     @Mock
     private PriceMapper priceMapper;

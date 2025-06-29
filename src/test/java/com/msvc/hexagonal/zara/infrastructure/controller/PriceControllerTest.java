@@ -120,6 +120,9 @@ class PriceControllerTest {
         PriceSummaryResponse response = new PriceSummaryResponse();
         response.setProductId(35455L);
         response.setBrandId(1L);
+        response.setPriceList(1);
+        response.setStartDate(LocalDateTime.parse("2020-06-14T00:00:00"));
+        response.setEndDate(LocalDateTime.parse("2020-12-31T23:59:59"));
         response.setPrice(35.50);
         response.setCurrency("EUR");
 
@@ -139,6 +142,9 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455L))
                 .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.priceList").value(1))
+                .andExpect(jsonPath("$.startDate").value("2020-06-14-00:00:00"))
+                .andExpect(jsonPath("$.endDate").value("2020-12-31-23:59:59"))
                 .andExpect(jsonPath("$.price").value(35.50))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }
@@ -150,6 +156,9 @@ class PriceControllerTest {
         PriceSummaryResponse response = new PriceSummaryResponse();
         response.setProductId(35455L);
         response.setBrandId(1L);
+        response.setPriceList(2);
+        response.setStartDate(LocalDateTime.parse("2020-06-14T15:00:00"));
+        response.setEndDate(LocalDateTime.parse("2020-06-14T18:30:00"));
         response.setPrice(25.45);
         response.setCurrency("EUR");
 
@@ -169,6 +178,9 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455L))
                 .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.priceList").value(2))
+                .andExpect(jsonPath("$.startDate").value("2020-06-14-15:00:00"))
+                .andExpect(jsonPath("$.endDate").value("2020-06-14-18:30:00"))
                 .andExpect(jsonPath("$.price").value(25.45))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }
@@ -180,6 +192,9 @@ class PriceControllerTest {
         PriceSummaryResponse response = new PriceSummaryResponse();
         response.setProductId(35455L);
         response.setBrandId(1L);
+        response.setPriceList(1);
+        response.setStartDate(LocalDateTime.parse("2020-06-14T00:00:00"));
+        response.setEndDate(LocalDateTime.parse("2020-12-31T23:59:59"));
         response.setPrice(35.50);
         response.setCurrency("EUR");
 
@@ -199,6 +214,9 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455L))
                 .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.priceList").value(1))
+                .andExpect(jsonPath("$.startDate").value("2020-06-14-00:00:00"))
+                .andExpect(jsonPath("$.endDate").value("2020-12-31-23:59:59"))
                 .andExpect(jsonPath("$.price").value(35.50))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }
@@ -210,6 +228,9 @@ class PriceControllerTest {
         PriceSummaryResponse response = new PriceSummaryResponse();
         response.setProductId(35455L);
         response.setBrandId(1L);
+        response.setPriceList(3);
+        response.setStartDate(LocalDateTime.parse("2020-06-15T00:00:00"));
+        response.setEndDate(LocalDateTime.parse("2020-06-15T11:00:00"));
         response.setPrice(30.50);
         response.setCurrency("EUR");
 
@@ -229,6 +250,9 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455L))
                 .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.priceList").value(3))
+                .andExpect(jsonPath("$.startDate").value("2020-06-15-00:00:00"))
+                .andExpect(jsonPath("$.endDate").value("2020-06-15-11:00:00"))
                 .andExpect(jsonPath("$.price").value(30.50))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }
@@ -240,6 +264,9 @@ class PriceControllerTest {
         PriceSummaryResponse response = new PriceSummaryResponse();
         response.setProductId(35455L);
         response.setBrandId(1L);
+        response.setPriceList(4);
+        response.setStartDate(LocalDateTime.parse("2020-06-15T16:00:00"));
+        response.setEndDate(LocalDateTime.parse("2020-12-31T23:59:59"));
         response.setPrice(38.95);
         response.setCurrency("EUR");
 
@@ -259,6 +286,9 @@ class PriceControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.productId").value(35455L))
                 .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.priceList").value(4))
+                .andExpect(jsonPath("$.startDate").value("2020-06-15-16:00:00"))
+                .andExpect(jsonPath("$.endDate").value("2020-12-31-23:59:59"))
                 .andExpect(jsonPath("$.price").value(38.95))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }

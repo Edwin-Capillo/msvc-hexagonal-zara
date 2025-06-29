@@ -28,19 +28,22 @@ public class JpaPriceRepositoryAdapter implements PriceRepositoryPort {
     public Price getById(Long id) {
         var priceEntity = this.springDatePriceRepository.findById(id);
         return this.priceMapper.toPrice(priceEntity.orElseThrow(() ->
-                new PriceException(HttpStatus.NOT_FOUND, String.format(ConstantsUtils.TASK_NOT_FOUND_MESSAGE_ERROR, id))));
+                new PriceException(HttpStatus.NOT_FOUND, String.format(ConstantsUtils.NOTFOUND, id))));
     }
 
     @Override
     public Price findByPriceRequest(PriceRequest priceRequest) {
         try {
-            if (priceRequest.getInputDate() == null || priceRequest.getProductId() == null || priceRequest.getBrandId() == null) {
+            if (priceRequest.getInputDate() == null
+                    || priceRequest.getProductId() == null
+                    || priceRequest.getBrandId() == null) {
                 throw new PriceException(HttpStatus.BAD_REQUEST, ConstantsUtils.NOTNULLOREMPTY);
             }
             var priceEntity = this.springDatePriceRepository.getPriceEntity(priceRequest.getProductId(),
                     priceRequest.getBrandId(), priceRequest.getInputDate());
             if (priceEntity.isEmpty()) {
-                throw new PriceException(HttpStatus.NOT_FOUND, String.format(ConstantsUtils.TASK_NOT_FOUND_MESSAGE_ERROR, priceRequest.getProductId()));
+                throw new PriceException(HttpStatus.NOT_FOUND,
+                        String.format(ConstantsUtils.NOTFOUND, priceRequest.getProductId()));
             }
 
             return this.priceMapper.toPrice(priceEntity.get());
