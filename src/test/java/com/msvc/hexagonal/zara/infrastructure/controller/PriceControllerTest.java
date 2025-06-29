@@ -35,6 +35,13 @@ class PriceControllerTest {
     @InjectMocks
     private PriceController priceController;
 
+    private void setupMockMvc() {
+        mockMvc = MockMvcBuilders.standaloneSetup(priceController).build();
+    }
+    private void mockPriceResponse(PriceSummaryResponse response) {
+        Mockito.when(priceUseCases.getPrice(any(PriceRequest.class))).thenReturn(response);
+    }
+
     @Test
     void testGetById() throws Exception {
         mockMvc = MockMvcBuilders.standaloneSetup(priceController).build();
@@ -98,7 +105,163 @@ class PriceControllerTest {
                 .andExpect(jsonPath("$.price").value(35.50))
                 .andExpect(jsonPath("$.currency").value("EUR"));
     }
+/*
+* Desarrollar unos test al endpoint rest que  validen las siguientes peticiones al servicio con los datos del ejemplo:
+-          Test 1: petición a las 10:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 2: petición a las 16:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 3: petición a las 21:00 del día 14 del producto 35455   para la brand 1 (ZARA)
+-          Test 4: petición a las 10:00 del día 15 del producto 35455   para la brand 1 (ZARA)
+-          Test 5: petición a las 21:00 del día 16 del producto 35455   para la brand 1 (ZARA)
+* */
+    @Test
+    void Test_1() throws Exception {
+        setupMockMvc();
 
+        PriceSummaryResponse response = new PriceSummaryResponse();
+        response.setProductId(35455L);
+        response.setBrandId(1L);
+        response.setPrice(35.50);
+        response.setCurrency("EUR");
+
+        mockPriceResponse(response);
+
+        String requestBody = """
+                {
+                    "productId": 35455,
+                    "brandId": 1,
+                    "applicationDate": "2020-06-14T10:00:00"
+                }
+                """;
+
+        mockMvc.perform(post("/api/price")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.productId").value(35455L))
+                .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.price").value(35.50))
+                .andExpect(jsonPath("$.currency").value("EUR"));
+    }
+
+    @Test
+    void Test_2() throws Exception {
+        setupMockMvc();
+
+        PriceSummaryResponse response = new PriceSummaryResponse();
+        response.setProductId(35455L);
+        response.setBrandId(1L);
+        response.setPrice(25.45);
+        response.setCurrency("EUR");
+
+        mockPriceResponse(response);
+
+        String requestBody = """
+                {
+                    "productId": 35455,
+                    "brandId": 1,
+                    "applicationDate": "2020-06-14T16:00:00"
+                }
+                """;
+
+        mockMvc.perform(post("/api/price")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.productId").value(35455L))
+                .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.price").value(25.45))
+                .andExpect(jsonPath("$.currency").value("EUR"));
+    }
+
+    @Test
+    void Test_3() throws Exception {
+        setupMockMvc();
+
+        PriceSummaryResponse response = new PriceSummaryResponse();
+        response.setProductId(35455L);
+        response.setBrandId(1L);
+        response.setPrice(35.50);
+        response.setCurrency("EUR");
+
+        mockPriceResponse(response);
+
+        String requestBody = """
+                {
+                    "productId": 35455,
+                    "brandId": 1,
+                    "applicationDate": "2020-06-14T21:00:00"
+                }
+                """;
+
+        mockMvc.perform(post("/api/price")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.productId").value(35455L))
+                .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.price").value(35.50))
+                .andExpect(jsonPath("$.currency").value("EUR"));
+    }
+
+    @Test
+    void Test_4() throws Exception {
+        setupMockMvc();
+
+        PriceSummaryResponse response = new PriceSummaryResponse();
+        response.setProductId(35455L);
+        response.setBrandId(1L);
+        response.setPrice(30.50);
+        response.setCurrency("EUR");
+
+        mockPriceResponse(response);
+
+        String requestBody = """
+                {
+                    "productId": 35455,
+                    "brandId": 1,
+                    "applicationDate": "2020-06-15T10:00:00"
+                }
+                """;
+
+        mockMvc.perform(post("/api/price")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.productId").value(35455L))
+                .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.price").value(30.50))
+                .andExpect(jsonPath("$.currency").value("EUR"));
+    }
+
+    @Test
+    void Test_5() throws Exception {
+        setupMockMvc();
+
+        PriceSummaryResponse response = new PriceSummaryResponse();
+        response.setProductId(35455L);
+        response.setBrandId(1L);
+        response.setPrice(38.95);
+        response.setCurrency("EUR");
+
+        mockPriceResponse(response);
+
+        String requestBody = """
+                {
+                    "productId": 35455,
+                    "brandId": 1,
+                    "applicationDate": "2020-06-16T21:00:00"
+                }
+                """;
+
+        mockMvc.perform(post("/api/price")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.productId").value(35455L))
+                .andExpect(jsonPath("$.brandId").value(1L))
+                .andExpect(jsonPath("$.price").value(38.95))
+                .andExpect(jsonPath("$.currency").value("EUR"));
+    }
     @Test
     void testGetAll() throws Exception {
         mockMvc = MockMvcBuilders.standaloneSetup(priceController).build();
