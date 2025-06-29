@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: Zara-Price API
+  description: API for managing prices
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: price
+    description: Endpoints of price
+paths:
+  /price/{id}:
+    get:
+      tags:
+        - price
+      summary: Get price details by ID
+      description: Retrieve detailed price information by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the price
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Price details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceDetailResponse'
+              example:
+                id: 1
+                brandId: 1
+                startDate: "2023-01-01-00:00:00"
+                endDate: "2023-12-31-23:59:59"
+                priceList: 1
+                productId: 35455
+                priority: 2
+                price: 35.50
+                currency: "EUR"
+        '404':
+          description: Price not found
+  /price:
+    post:
+      tags:
+        - price
+      summary: Get price summary
+      description: Retrieve a price summary based on the provided request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceRequest'
+            example:
+              inputDate: "2023-06-14-10:00:00"
+              productId: 35455
+              brandId: 1
+      responses:
+        '200':
+          description: Price summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceSummaryResponse'
+              example:
+                productId: 35455
+                brandId: 1
+                priceList: 2
+                startDate: "2023-06-14-10:00:00"
+                endDate: "2023-06-14-16:00:00"
+                price: 35.50
+                currency: "EUR"
+        '400':
+          description: Invalid request
+  /prices:
+    get:
+      tags:
+        - price
+      summary: Get all prices
+      description: Retrieve a list of all prices.
+      responses:
+        '200':
+          description: Prices retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PriceDetailResponse'
+              example:
+                - id: 1
+                  brandId: 1
+                  startDate: "2023-01-01-00:00:00"
+                  endDate: "2023-12-31-23:59:59"
+                  priceList: 1
+                  productId: 35455
+                  priority: 2
+                  price: 35.50
+                  currency: "EUR"
+                - id: 2
+                  brandId: 2
+                  startDate: "2023-01-01-00:00:00"
+                  endDate: "2023-12-31-23:59:59"
+                  priceList: 2
+                  productId: 35455
+                  priority: 1
+                  price: 50.00
+                  currency: "USD"
+components:
+  schemas:
+    PriceDetailResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        brandId:
+          type: integer
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        priceList:
+          type: integer
+        productId:
+          type: integer
+        priority:
+          type: integer
+        price:
+          type: number
+          format: double
+        currency:
+          type: string
+    PriceRequest:
+      type: object
+      properties:
+        inputDate:
+          type: string
+          format: date-time
+        productId:
+          type: integer
+        brandId:
+          type: integer
+    PriceSummaryResponse:
+      type: object
+      properties:
+        productId:
+          type: integer
+        brandId:
+          type: integer
+        priceList:
+          type: integer
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        price:
+          type: number
+          format: double
+        currency:
+          type: string
+          
