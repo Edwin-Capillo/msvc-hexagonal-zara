@@ -12,9 +12,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class PriceSummaryResponse {
     private Long productId;
     private Long brandId;

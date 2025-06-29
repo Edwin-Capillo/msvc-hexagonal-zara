@@ -36,20 +36,6 @@ class PriceServiceTest {
     }
 
     @Test
-    void testGetById() {
-        Price mockPrice = new Price();
-        PriceDetailResponse mockResponse = new PriceDetailResponse();
-        Mockito.when(priceRepositoryPort.getById(1L)).thenReturn(mockPrice);
-        Mockito.when(priceResponseMapper.toPriceDetailResponse(mockPrice)).thenReturn(mockResponse);
-
-        PriceDetailResponse result = priceService.getById(1L);
-
-        assertNotNull(result);
-        Mockito.verify(priceRepositoryPort).getById(1L);
-        Mockito.verify(priceResponseMapper).toPriceDetailResponse(mockPrice);
-    }
-
-    @Test
     void testGetPrice() {
 
         PriceRequest request = new PriceRequest();
@@ -85,6 +71,20 @@ class PriceServiceTest {
         assertNotNull(result);
         Mockito.verify(priceRepositoryPort).findByPriceRequest(request);
         Mockito.verify(priceResponseMapper).toPriceSummaryResponse(mockPrice);
+    }
+
+    @Test
+    void testGetById() {
+        Price mockPrice = new Price();
+        PriceDetailResponse mockResponse = new PriceDetailResponse();
+        Mockito.when(priceRepositoryPort.getById(1L)).thenReturn(mockPrice);
+        Mockito.when(priceResponseMapper.toPriceDetailResponse(mockPrice)).thenReturn(mockResponse);
+
+        PriceDetailResponse result = priceService.getById(1L);
+
+        assertNotNull(result);
+        Mockito.verify(priceRepositoryPort).getById(1L);
+        Mockito.verify(priceResponseMapper).toPriceDetailResponse(mockPrice);
     }
 
     @Test

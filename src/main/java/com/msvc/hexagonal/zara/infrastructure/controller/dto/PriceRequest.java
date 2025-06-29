@@ -12,9 +12,6 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class PriceRequest implements Serializable {
 
     @JsonFormat(pattern = ConstantsUtils.FORMATDATETIME)
