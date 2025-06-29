@@ -129,7 +129,7 @@ class PriceControllerTest {
                 {
                     "productId": 35455,
                     "brandId": 1,
-                    "applicationDate": "2020-06-14T10:00:00"
+                    "inputDate": "2020-06-14-10:00:00"
                 }
                 """;
 
@@ -159,7 +159,7 @@ class PriceControllerTest {
                 {
                     "productId": 35455,
                     "brandId": 1,
-                    "applicationDate": "2020-06-14T16:00:00"
+                    "inputDate": "2020-06-14-16:00:00"
                 }
                 """;
 
@@ -189,7 +189,7 @@ class PriceControllerTest {
                 {
                     "productId": 35455,
                     "brandId": 1,
-                    "applicationDate": "2020-06-14T21:00:00"
+                    "inputDate": "2020-06-14-21:00:00"
                 }
                 """;
 
@@ -219,7 +219,7 @@ class PriceControllerTest {
                 {
                     "productId": 35455,
                     "brandId": 1,
-                    "applicationDate": "2020-06-15T10:00:00"
+                    "inputDate": "2020-06-15-10:00:00"
                 }
                 """;
 
@@ -249,7 +249,7 @@ class PriceControllerTest {
                 {
                     "productId": 35455,
                     "brandId": 1,
-                    "applicationDate": "2020-06-16T21:00:00"
+                    "inputDate": "2020-06-16-21:00:00"
                 }
                 """;
 
