@@ -13,7 +13,7 @@ create table PRICE(
   PRICE_LIST int,
   PRODUCT_ID int,
   PRIORITY int,
-  PRICE numeric (10,2),
+  PRICE DOUBLE,
   CURRENCY varchar(5),
   PRIMARY KEY ( ID ),
   CONSTRAINT fk_BRAND_ID_OFFER

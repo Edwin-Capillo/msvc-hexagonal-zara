@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -26,6 +25,6 @@ public class PriceEntity {
     private Integer priceList;
     private Long productId;
     private Integer priority;
-    private BigDecimal price;
+    private Double price;
     private String currency;
 }
