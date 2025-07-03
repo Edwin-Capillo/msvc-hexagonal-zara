@@ -1,35 +1,19 @@
 package com.msvc.hexagonal.zara.infrastructure.adapters.exception;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PriceException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-
     private HttpStatus errorCode;
     private String errorMessage;
 
-    public PriceException(HttpStatus errorCode, String errorMessage) {
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
-    }
-
-    public PriceException() {
-    }
-
-    public HttpStatus getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(HttpStatus errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 }
