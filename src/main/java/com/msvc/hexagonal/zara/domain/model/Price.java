@@ -15,6 +15,6 @@ public class Price {
     private Integer priceList;
     private Long productId;
     private Integer priority;
-    private Double price;
+    private Double priceAmount;
     private String currency;
 }

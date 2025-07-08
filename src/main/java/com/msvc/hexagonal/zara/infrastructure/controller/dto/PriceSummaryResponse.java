@@ -17,6 +17,6 @@ public class PriceSummaryResponse {
     private LocalDateTime startDate;
     @JsonFormat(pattern = ConstantsUtils.FORMATDATETIME)
     private LocalDateTime endDate;
-    private Double price;
+    private Double priceAmount;
     private String currency;
 }

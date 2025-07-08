@@ -51,7 +51,7 @@ class PriceControllerIntegrationTest {
                 .andExpect(jsonPath("$.priceList").value(expectedPriceList))
                 .andExpect(jsonPath("$.startDate").value(expectedStartDate))
                 .andExpect(jsonPath("$.endDate").value(expectedEndDate))
-                .andExpect(jsonPath("$.price").value(expectedPrice))
+                .andExpect(jsonPath("$.priceAmount").value(expectedPrice))
                 .andExpect(jsonPath("$.currency").value(expectedCurrency));
     }
 }

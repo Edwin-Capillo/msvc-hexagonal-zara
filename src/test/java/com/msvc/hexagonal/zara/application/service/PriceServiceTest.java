@@ -51,7 +51,7 @@ class PriceServiceTest {
         mockPrice.setPriceList(1);
         mockPrice.setProductId(1L);
         mockPrice.setPriority(1);
-        mockPrice.setPrice(100.0);
+        mockPrice.setPriceAmount(100.0);
         mockPrice.setCurrency("EUR");
 
         PriceSummaryResponse mockResponse = new PriceSummaryResponse();
@@ -60,7 +60,7 @@ class PriceServiceTest {
         mockResponse.setStartDate(LocalDateTime.parse("2023-10-01T00:00:00"));
         mockResponse.setEndDate(LocalDateTime.parse("2023-10-31T23:59:59"));
         mockResponse.setPriceList(1);
-        mockResponse.setPrice(100.0);
+        mockResponse.setPriceAmount(100.0);
         mockResponse.setCurrency("EUR");
 
         Mockito.when(priceRepositoryPort.findByPriceRequest(any(PriceRequest.class))).thenReturn(mockPrice);

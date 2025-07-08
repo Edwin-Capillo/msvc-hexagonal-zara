@@ -17,7 +17,7 @@ public interface PriceMapper {
     @Mapping(source = "priceList", target = "priceList")
     @Mapping(source = "productId", target = "productId")
     @Mapping(source = "priority", target = "priority")
-    @Mapping(source = "price", target = "price")
+    @Mapping(source = "priceAmount", target = "priceAmount")
     @Mapping(source = "currency", target = "currency")
     Price toPrice(PriceEntity entity);
 

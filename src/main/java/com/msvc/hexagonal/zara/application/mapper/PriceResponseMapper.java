@@ -17,7 +17,7 @@ public interface PriceResponseMapper {
     @Mapping(source = "priceList", target = "priceList")
     @Mapping(source = "startDate", target = "startDate")
     @Mapping(source = "endDate", target = "endDate")
-    @Mapping(source = "price", target = "price")
+    @Mapping(source = "priceAmount", target = "priceAmount")
     @Mapping(source = "currency", target = "currency")
     PriceSummaryResponse toPriceSummaryResponse(Price price);
 
