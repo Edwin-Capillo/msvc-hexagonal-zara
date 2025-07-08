@@ -44,7 +44,7 @@ class JpaPriceRepositoryAdapterTest {
         mockEntity.setPriceList(1);
         mockEntity.setProductId(1L);
         mockEntity.setPriority(1);
-        mockEntity.setPrice(100.0);
+        mockEntity.setPriceAmount(100.0);
         mockEntity.setCurrency("EUR");
 
         Price mockPrice = new Price();
@@ -55,7 +55,7 @@ class JpaPriceRepositoryAdapterTest {
         mockPrice.setPriceList(1);
         mockPrice.setProductId(1L);
         mockPrice.setPriority(1);
-        mockPrice.setPrice(100.0);
+        mockPrice.setPriceAmount(100.0);
         mockPrice.setCurrency("EUR");
 
         Mockito.when(springDatePriceRepository.findById(1L)).thenReturn(Optional.of(mockEntity));
@@ -72,7 +72,7 @@ class JpaPriceRepositoryAdapterTest {
     void testGetById_NotFound() {
         Mockito.when(springDatePriceRepository.findById(1L)).thenReturn(Optional.empty());
 
-        PriceException exception = assertThrows(PriceException.class, () -> jpaPriceRepositoryAdapter.getById(1L));
+        assertThrows(PriceException.class, () -> jpaPriceRepositoryAdapter.getById(1L));
 
         Mockito.verify(springDatePriceRepository).findById(1L);
     }
@@ -107,7 +107,7 @@ class JpaPriceRepositoryAdapterTest {
         Mockito.when(springDatePriceRepository.getPriceEntity(eq(1L), eq(1L), any(LocalDateTime.class)))
                 .thenReturn(Optional.empty());
 
-        PriceException exception = assertThrows(PriceException.class, () -> jpaPriceRepositoryAdapter.findByPriceRequest(request));
+        assertThrows(PriceException.class, () -> jpaPriceRepositoryAdapter.findByPriceRequest(request));
 
         Mockito.verify(springDatePriceRepository).getPriceEntity(eq(1L), eq(1L), any(LocalDateTime.class));
     }

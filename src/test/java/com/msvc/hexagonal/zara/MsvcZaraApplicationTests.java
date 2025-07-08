@@ -8,6 +8,7 @@ class MsvcZaraApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// No additional implementation is required for this test.
 	}
 
 }
