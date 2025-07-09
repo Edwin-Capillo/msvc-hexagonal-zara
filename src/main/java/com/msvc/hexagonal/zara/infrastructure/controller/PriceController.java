@@ -4,6 +4,7 @@ import com.msvc.hexagonal.zara.application.ports.in.PriceUseCases;
 import com.msvc.hexagonal.zara.infrastructure.controller.dto.PriceDetailResponse;
 import com.msvc.hexagonal.zara.infrastructure.controller.dto.PriceRequest;
 import com.msvc.hexagonal.zara.infrastructure.controller.dto.PriceSummaryResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,12 +16,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class PriceController {
     private final PriceUseCases priceUseCases;
-
-    public PriceController(PriceUseCases priceUseCases) {
-        this.priceUseCases = priceUseCases;
-    }
 
     @GetMapping("/price/{id}")
     public PriceDetailResponse getById(@PathVariable Long id) {
