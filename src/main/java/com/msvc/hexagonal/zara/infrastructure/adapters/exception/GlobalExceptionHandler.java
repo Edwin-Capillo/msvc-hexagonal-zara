@@ -1,5 +1,6 @@
 package com.msvc.hexagonal.zara.infrastructure.adapters.exception;
 
+import com.msvc.hexagonal.zara.infrastructure.util.ConstantsUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,6 +17,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred.");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ConstantsUtils.UNEXPECTEDERROR);
     }
 }
